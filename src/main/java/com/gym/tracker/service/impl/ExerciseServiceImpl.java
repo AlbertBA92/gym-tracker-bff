@@ -31,4 +31,19 @@ public class ExerciseServiceImpl implements IExerciseService {
 		return repo.findAll().stream().map(x -> modelMapper.map(x, ExerciseDTO.class)).collect(Collectors.toList());
 	}
 
+	@Override
+	public ExerciseDTO updateExercise(Exercise exercise) {
+		return modelMapper.map(repo.save(exercise), ExerciseDTO.class);
+	}
+
+	@Override
+	public void removeExercise(String id) {
+		repo.deleteById(id);
+	}
+
+	@Override
+	public boolean isPresent(String id) {
+		return repo.findById(id).isPresent();
+	}
+
 }

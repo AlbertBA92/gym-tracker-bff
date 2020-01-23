@@ -10,4 +10,10 @@ public interface IExerciseService {
 	ExerciseDTO addExerciseEntry(Exercise exerciseDto);
 
 	List<ExerciseDTO> getExercises();
+
+	ExerciseDTO updateExercise(Exercise exercise);
+
+	void removeExercise(String id);
+
+	boolean isPresent(String id);
 }

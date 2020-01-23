@@ -9,7 +9,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gym-tacker-bff</name>
 	<description>API REST my gym tracker</description>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -51,6 +51,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+		           <executable>true</executable>
+		       </configuration>
 			</plugin>
 		</plugins>
 	</build>
