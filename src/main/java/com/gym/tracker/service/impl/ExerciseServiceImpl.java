@@ -1,6 +1,7 @@
 package com.gym.tracker.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.gym.tracker.dto.ExerciseDTO;
+import com.gym.tracker.exception.EntityNotFoundException;
 import com.gym.tracker.model.Exercise;
 import com.gym.tracker.repository.ExerciseRepo;
 import com.gym.tracker.service.IExerciseService;
@@ -44,6 +46,16 @@ public class ExerciseServiceImpl implements IExerciseService {
 	@Override
 	public boolean isPresent(String id) {
 		return repo.findById(id).isPresent();
+	}
+
+	@Override
+	public ExerciseDTO getById(String id) {
+		Optional<Exercise> opcional = repo.findById(id);
+		if (opcional.isPresent()) {
+			return modelMapper.map(opcional.get(), ExerciseDTO.class);
+		} else {
+			throw new EntityNotFoundException(id);
+		}
 	}
 
 }

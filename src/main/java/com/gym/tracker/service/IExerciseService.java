@@ -13,7 +13,10 @@ public interface IExerciseService {
 
 	ExerciseDTO updateExercise(Exercise exercise);
 
+	ExerciseDTO getById(String id);
+
 	void removeExercise(String id);
 
 	boolean isPresent(String id);
+
 }

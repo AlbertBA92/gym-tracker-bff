@@ -63,7 +63,7 @@ public class ExerciseController {
 		if (exerciseService.isPresent(id)) {
 			return ResponseEntity.ok(exerciseService.updateExercise(map));
 		} else {
-			throw new EntityNotFoundException("No se ha encontrado el recurso con id:" + id);
+			throw new EntityNotFoundException(id);
 		}
 	}
 
@@ -75,7 +75,7 @@ public class ExerciseController {
 			exerciseService.removeExercise(id);
 			return ResponseEntity.ok().build();
 		} else {
-			throw new EntityNotFoundException("No se ha encontrado el recurso con id:" + id);
+			throw new EntityNotFoundException(id);
 		}
 	}
 
@@ -83,6 +83,12 @@ public class ExerciseController {
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<List<ExerciseDTO>> getAll() {
 		return ResponseEntity.ok(exerciseService.getExercises());
+	}
+
+	@ResponseBody
+	@GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<ExerciseDTO> getById(@PathVariable(required = true, value = "id") String id) {
+		return ResponseEntity.ok(exerciseService.getById(id));
 	}
 
 }
