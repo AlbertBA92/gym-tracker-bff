@@ -8,11 +8,7 @@ import com.gym.tracker.model.Exercise;
 
 public interface ExerciseRepo extends MongoRepository<Exercise, String> {
 
-	Exercise findOneById(String id);
-
 	List<Exercise> findAll();
-
-	void delete(Exercise exercise);
 
 	void deleteAll();
 

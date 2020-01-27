@@ -7,7 +7,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import io.github.kaiso.relmongo.config.EnableRelMongo;
+
 @Configuration
+@EnableRelMongo
 public class ApplicationConfig {
 
 	@Bean
