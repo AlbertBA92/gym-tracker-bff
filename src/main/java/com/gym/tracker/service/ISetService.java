@@ -7,6 +7,8 @@ public interface ISetService {
 
 	SetDTO updateSet(Set set);
 
+	SetDTO getById(String id);
+
 	void removeSet(String id);
 
 	boolean isPresent(String id);

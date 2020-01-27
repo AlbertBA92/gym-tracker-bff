@@ -42,4 +42,13 @@ public class SetServiceImpl implements ISetService {
 		return setRepo.existsById(id);
 	}
 
+	@Override
+	public SetDTO getById(String id) {
+		if (isPresent(id)) {
+			return modelMapper.map(setRepo.findOneById(id), SetDTO.class);
+		} else {
+			throw new EntityNotFoundException(id);
+		}
+	}
+
 }

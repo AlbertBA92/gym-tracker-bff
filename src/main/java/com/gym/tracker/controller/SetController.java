@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,6 +36,12 @@ public class SetController {
 	@ExceptionHandler(EntityNotFoundException.class)
 	public ResponseEntity<String> handleException(EntityNotFoundException e) {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+	}
+
+	@ResponseBody
+	@GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<SetDTO> getById(@PathVariable(required = true, value = "id") String id) {
+		return ResponseEntity.ok(setService.getById(id));
 	}
 
 	@SuppressWarnings("rawtypes")
