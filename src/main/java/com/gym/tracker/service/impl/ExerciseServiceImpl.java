@@ -35,7 +35,8 @@ public class ExerciseServiceImpl implements IExerciseService {
 
 	@Override
 	public List<ExerciseDTO> getExercises() {
-		return exerciseRepo.findAll().stream().map(x -> modelMapper.map(x, ExerciseDTO.class)).collect(Collectors.toList());
+		return exerciseRepo.findAll().stream().map(x -> modelMapper.map(x, ExerciseDTO.class))
+				.collect(Collectors.toList());
 	}
 
 	@Override
@@ -48,8 +49,10 @@ public class ExerciseServiceImpl implements IExerciseService {
 		Optional<Exercise> findById = exerciseRepo.findById(id);
 		if (findById.isPresent()) {
 			Exercise exercise = findById.get();
-			for (Set set : exercise.getSets()) {
-				setRepo.delete(set);
+			if (exercise.getSets() != null) {
+				for (Set set : exercise.getSets()) {
+					setRepo.delete(set);
+				}
 			}
 			exerciseRepo.deleteById(id);
 		} else {
