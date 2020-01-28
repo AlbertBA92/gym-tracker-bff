@@ -5,6 +5,8 @@ import com.gym.tracker.model.Set;
 
 public interface ISetService {
 
+	SetDTO addSet(Set set);
+
 	SetDTO updateSet(Set set);
 
 	SetDTO getById(String id);

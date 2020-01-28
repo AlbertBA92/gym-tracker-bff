@@ -51,4 +51,9 @@ public class SetServiceImpl implements ISetService {
 		}
 	}
 
+	@Override
+	public SetDTO addSet(Set set) {
+		return modelMapper.map(setRepo.save(set), SetDTO.class);
+	}
+
 }
