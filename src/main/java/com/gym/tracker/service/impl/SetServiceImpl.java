@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.gym.tracker.dto.SetDTO;
 import com.gym.tracker.exception.EntityNotFoundException;
@@ -12,7 +12,7 @@ import com.gym.tracker.model.Set;
 import com.gym.tracker.repository.SetRepo;
 import com.gym.tracker.service.ISetService;
 
-@Component
+@Service
 public class SetServiceImpl implements ISetService {
 
 	@Autowired

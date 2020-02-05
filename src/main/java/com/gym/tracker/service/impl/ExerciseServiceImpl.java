@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.gym.tracker.dto.ExerciseDTO;
 import com.gym.tracker.exception.EntityNotFoundException;
@@ -16,7 +16,7 @@ import com.gym.tracker.repository.ExerciseRepo;
 import com.gym.tracker.repository.SetRepo;
 import com.gym.tracker.service.IExerciseService;
 
-@Component
+@Service
 public class ExerciseServiceImpl implements IExerciseService {
 
 	@Autowired
@@ -35,7 +35,8 @@ public class ExerciseServiceImpl implements IExerciseService {
 
 	@Override
 	public List<ExerciseDTO> getExercises() {
-		return exerciseRepo.findAll().stream().map(x -> modelMapper.map(x, ExerciseDTO.class)).collect(Collectors.toList());
+		return exerciseRepo.findAll().stream().map(x -> modelMapper.map(x, ExerciseDTO.class))
+				.collect(Collectors.toList());
 	}
 
 	@Override
