@@ -5,14 +5,9 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 
-//@Configuration
-////@EnableAutoConfiguration
-////@ComponentScan
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = { MongoAutoConfiguration.class })
-public class GymTackerBffApplication
-//extends SpringBootServletInitializer 
-{
+public class GymTackerBffApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GymTackerBffApplication.class, args);
 	}

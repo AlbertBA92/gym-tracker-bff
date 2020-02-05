@@ -18,9 +18,9 @@ public class Exercise {
 	@Id
 	private String id;
 	private String name;
+	private String lastIncrease;
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinProperty(name = "sets")
 	private List<Set> sets;
-	private String lastIncrease;
 
 }
